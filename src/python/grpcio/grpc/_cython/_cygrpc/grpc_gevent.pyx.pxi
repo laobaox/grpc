@@ -199,6 +199,7 @@ cdef grpc_error_handle socket_getsockname(grpc_custom_socket* socket,
 
 def applysockopts(s):
   s.setsockopt(gevent_socket.SOL_SOCKET, gevent_socket.SO_REUSEADDR, 1)
+  s.setsockopt(gevent_socket.SOL_SOCKET, gevent_socket.SO_REUSEPORT, 1)
   s.setsockopt(gevent_socket.IPPROTO_TCP, gevent_socket.TCP_NODELAY, True)
 
 cdef grpc_error_handle socket_bind(grpc_custom_socket* socket,
